@@ -1,0 +1,4 @@
+#! /bin/sh
+
+export PATH="$PATH:/usr/local/sbin:/opt/1C/1CE/components/1c-enterprise-ring-0.19.2+6-x86_64:/opt/cxoffice/bin:/home/delta/.dotnet/tools:/home/delta/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+

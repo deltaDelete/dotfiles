@@ -1,0 +1,94 @@
+[2023-02-02 02:45:37.227] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:45:37.227] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:45:37.233] [info] Hyprland IPC starting
+[2023-02-02 02:45:37.283] [error] custom/power: invalid format string
+[2023-02-02 02:45:38.861] [error] custom/power: invalid format string
+wofi: option requires an argument -- 'r'
+
+(wofi:1017780): Gtk-WARNING **: 02:45:38.942: Theme parsing error: <data>:15:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1017780): Gtk-WARNING **: 02:45:38.942: Theme parsing error: <data>:15:19: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1017780): Gtk-WARNING **: 02:45:38.942: Theme parsing error: <data>:16:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1017780): Gtk-WARNING **: 02:45:38.943: Theme parsing error: <data>:56:14: 'font-color' is not a valid property name
+
+(wofi:1017780): Gtk-WARNING **: 02:45:38.943: Theme parsing error: <data>:69:0: expected '{' after selectors
+/home/delta/.config/wofi/powermenu.sh: строка 25: синтаксическая ошибка рядом с неожиданным маркером «;;»
+/home/delta/.config/wofi/powermenu.sh: строка 25: `    ;;'
+[2023-02-02 02:47:14.888] [error] custom/power: invalid format string
+wofi: option requires an argument -- 'r'
+
+(wofi:1019842): Gtk-WARNING **: 02:47:14.971: Theme parsing error: <data>:15:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1019842): Gtk-WARNING **: 02:47:14.971: Theme parsing error: <data>:15:19: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1019842): Gtk-WARNING **: 02:47:14.971: Theme parsing error: <data>:16:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1019842): Gtk-WARNING **: 02:47:14.971: Theme parsing error: <data>:56:14: 'font-color' is not a valid property name
+
+(wofi:1019842): Gtk-WARNING **: 02:47:14.971: Theme parsing error: <data>:69:0: expected '{' after selectors
+2023-02-02 02:47:28 - [swaylock-1.7.2/pam.c:105] pam_authenticate failed: invalid credentials
+ok
+ok
+[2023-02-02 02:50:17.392] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:50:17.392] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:50:17.402] [info] Hyprland IPC starting
+[2023-02-02 02:50:17.448] [error] custom/power: invalid format string
+[2023-02-02 02:50:27.203] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:50:27.203] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:50:27.209] [info] Hyprland IPC starting
+[2023-02-02 02:50:27.254] [error] custom/power: invalid format string
+[2023-02-02 02:50:41.996] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:50:41.996] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:50:42.001] [info] Hyprland IPC starting
+[2023-02-02 02:50:42.047] [error] custom/power: invalid format string
+[2023-02-02 02:50:51.395] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:50:51.396] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:50:51.404] [info] Hyprland IPC starting
+[2023-02-02 02:50:51.455] [error] custom/power: invalid format string
+[2023-02-02 02:50:56.936] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:50:56.936] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:50:56.946] [info] Hyprland IPC starting
+[2023-02-02 02:50:56.987] [error] custom/power: invalid format string
+[2023-02-02 02:51:03.020] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:51:03.020] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:51:03.025] [info] Hyprland IPC starting
+[2023-02-02 02:51:03.068] [error] custom/power: invalid format string
+[2023-02-02 02:52:33.257] [info] Using configuration file /home/delta/.config/waybar/config
+[2023-02-02 02:52:33.257] [info] Using CSS file /home/delta/.config/waybar/style.css
+[2023-02-02 02:52:33.262] [info] Hyprland IPC starting
+wofi: option requires an argument -- 'r'
+
+(wofi:1028008): Gtk-WARNING **: 02:53:14.293: Theme parsing error: <data>:15:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1028008): Gtk-WARNING **: 02:53:14.293: Theme parsing error: <data>:15:19: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1028008): Gtk-WARNING **: 02:53:14.293: Theme parsing error: <data>:16:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1028008): Gtk-WARNING **: 02:53:14.293: Theme parsing error: <data>:56:14: 'font-color' is not a valid property name
+
+(wofi:1028008): Gtk-WARNING **: 02:53:14.293: Theme parsing error: <data>:69:0: expected '{' after selectors
+ok
+sh: строка 1: activate: команда не найдена
+ok
+ok
+ok
+[2023-02-02 03:34:52.037] [warning] Failed to update properties: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: Объект по пути «/org/ayatana/NotificationItem/discord1» не существует
+ok
+ok
+sh: строка 1: activate: команда не найдена
+ok
+ok
+ok
+wofi: option requires an argument -- 'r'
+
+(wofi:1287111): Gtk-WARNING **: 06:22:26.341: Theme parsing error: <data>:15:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1287111): Gtk-WARNING **: 06:22:26.341: Theme parsing error: <data>:15:19: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1287111): Gtk-WARNING **: 06:22:26.341: Theme parsing error: <data>:16:14: Not using units is deprecated. Assuming 'px'.
+
+(wofi:1287111): Gtk-WARNING **: 06:22:26.341: Theme parsing error: <data>:56:14: 'font-color' is not a valid property name
+
+(wofi:1287111): Gtk-WARNING **: 06:22:26.341: Theme parsing error: <data>:69:0: expected '{' after selectors

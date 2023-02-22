@@ -1,0 +1,88 @@
+@define-color selected-color #393939;
+@define-color bg #303030;
+@define-color darker-bg #242424;
+@define-color selected-text white;
+
+/* параметры вообще для всего */
+*{
+    font-family: Hack, FontAwesome;
+    font-size: 12px;
+}
+
+/* параметры для окна */
+window {
+    /* background-color: #262a32; */
+    background-color: @bg;
+    border-radius: 15px;
+}
+
+/* параметры для окна ввода */
+#input {
+    /* margin: 10 0 10 0px;
+    padding: 5;
+    border-radius: 1rem;
+    border: none;
+    /* border-bottom: 6px solid @bg;
+    color: @selected-text;
+    background-color: @selected-color; */
+    position: relative;
+    top: -10rem;
+}
+
+/* параметры для окна с приложениями */
+#inner-box {
+    background-color: @bg;
+
+}
+
+/* параметры пространства вокруг окна wofi */
+#outer-box {
+    margin: 20px;
+    padding:0px;
+    background-color: @bg;
+}
+
+/* параметры для полосы прокрутки */
+#scroll {
+    background-color: @bg;
+}
+
+/* параметры для текста */
+#text {
+padding: 5px;
+color: white;
+}
+
+/* параметры для 2й колонки если таковая имеется */
+/* #entry:nth-child(even){
+    background-color: #262a32;
+} */
+
+/* параметры для выделенного пункта */
+#entry:selected {
+    border-radius: 1rem;
+    background-color: @selected-color;
+    color: white;
+    outline: none;
+}
+
+#entry {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    background-color: @darker-bg;
+}
+
+/* параметры выделенного текста */
+#text:selected {
+    color: @selected-text;
+}
+
+/* параметры для иконок */
+#img {
+    margin-right: 0.5rem;
+}
+
+/* параметры для не выделенного */
+#unselected
