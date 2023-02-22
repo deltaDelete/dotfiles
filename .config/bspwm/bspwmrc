@@ -1,0 +1,81 @@
+#! /bin/bash
+
+export TERMINAL=kitty
+
+xrandr --output DP-0 --primary --left-of HDMI-0
+# Монитор ниже
+# xrandr --output HDMI-0 --pos 2560x410
+# Монитор вровень
+xrandr --output HDMI-0 --pos 2560x360
+
+# Хоткеи
+sxhkd &
+# Полкит для того, чтобы работали повышения прав в приложениях
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# Запоминание нумпада
+numlockx &
+# Обои
+nitrogen --restore &
+# Уведомления
+dunst &
+# История буфера обмена
+greenclip daemon &
+# Полибар
+polybar example &
+# пиком с прозрачностью и загруглением picom-jonaburg-git
+picom --experimental-backend &
+# Нормальный курсор в xorg
+xsetroot -cursor_name left_ptr &
+# Фикс Java приложений
+wmname LG3D
+export _JAVA_AWT_WM_NONREPARENTING=1
+# Автостарт
+com.microsoft.Edge &
+conky &
+steam-runtime &
+# Spotifywm
+/usr/local/bin/spotify &
+# EasyEffects
+easyeffects --gapplication-service &
+
+# Конфиг мониторов
+bspc monitor DP-0 -d 1 2 3
+bspc monitor HDMI-0 -d 4 5 6
+
+# Гапсы и границы
+bspc config border_width 1
+bspc config window_gap 10
+
+# Цвета
+bspc config normal_border_color "#23252e"
+bspc config active_border_color "#23252e"
+bspc config focused_border_color "#f9f8fe"
+
+bspc config presel_feedback_color "#fd2e59"
+
+bspc config split_ratio 0.5
+
+bspc config focus_follows_pointer true
+bspc config pointer_modifier super
+bspc config pointer_action1 move
+
+bspc config single_monocle false
+
+bspc config borderless_monocle false
+bspc config gapless_monocle false
+bspc config paddingless_monocle true
+
+# Правила
+# bspc rule -a Microsoft-edge state=tiled follow=off desktop='^1'
+bspc rule -a Steam state=tiled follow=off desktop='^6'
+# bspc rule -a Steam:\*:"Список друзей" state=floating follow=off desktop="^6"
+# bspc rule -a Steam:\*:"Настройки" state=floating follow=off desktop="^6"
+bspc rule -a "spotify":*:"Spotify" state=tiled follow=off desktop'^4'
+bspc rule -a Calfjackhost state=floating follow=off
+bspc rule -a Microsoft-edge:*:"Главная" state=tiled follow=off desktop='^1'
+bspc rule -a Microsoft-edge:*:"Манга" state=tiled follow=off desktop='^4'
+bspc rule -a Microsoft-edge:*:"Аниме" state=tiled follow=off desktop='^4'
+bspc rule -a fig state=floating follow=off
+
+# external rules 
+bspc config external_rules_command "/home/delta/.config/bspwm/external_rules.sh"
