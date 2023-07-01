@@ -53,7 +53,7 @@ get_duration() {
 }
 
 KEY="e434b5435a979de6e155570590bee89b"
-CITY="Abakan"
+CITY="Ust-Abakan"
 UNITS="metric"
 SYMBOL="°"
 

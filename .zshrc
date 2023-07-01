@@ -1,5 +1,5 @@
 # Path
-export PATH="$PATH:/home/delta/.local/bin"
+export PATH="$PATH:/home/delta/.yarn/bin"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -18,6 +18,8 @@ plugins=(
 	zsh-syntax-highlighting
 	dotnet
 )
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugings/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 

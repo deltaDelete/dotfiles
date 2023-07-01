@@ -5,6 +5,7 @@
     "width": 2520,
     "spacing": 10,
     "output": "DP-1",
+    "mode": "invisible",
     "modules-left": [
         "hyprland/window"
     ],

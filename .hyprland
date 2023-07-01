@@ -1,6 +1,7 @@
 #! /bin/sh
 cd ~
 
+export PATH="/home/$(whoami)/.local/bin:$PATH"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export XCURSOR_SIZE=24
 export LIBVA_DRIVER_NAME=nvidia

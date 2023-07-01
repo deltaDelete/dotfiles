@@ -6,6 +6,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomasiser/vim-code-dark'
+Plugin 'lambdalisue/suda.vim'
 
 call vundle#end()
 filetype plugin indent on

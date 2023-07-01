@@ -79,6 +79,23 @@ button:focus {
     background-color: #eb4d4b;
 }
 
+#workspaces button:first-child {
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#workspaces button:last-child {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#workspaces button:not(:first-child):not(:last-child) {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
+}
+
 
 /*---ТРЕЙ---------------------------------------------------------------*/
 #tray {
@@ -122,6 +139,7 @@ button:focus {
 #custom-spotify-prev,
 #custom-spotify-playpause,
 #custom-spotify-next,
+#custom-notification-center,
 #custom-power {
     padding: 0 15px 0 15px;
     margin: 5px 0 5px 0px;
