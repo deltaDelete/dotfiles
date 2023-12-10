@@ -1,0 +1,536 @@
+/** EWW.SCSS
+Created by saimoom **/
+* {
+  all: unset;
+  // font-family: ;
+  font-family: 'Symbols Nerd Font Mono', Hack;
+}
+
+/** General **/
+.bar_class {
+  // background-color: #0f0f17;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 16px;
+}
+
+.module {
+  margin: 0px 0px 0px 0px;
+  border-radius: 16px;
+  background-color: rgba(#333, 0.3);
+}
+
+.combobox {
+  background-color: #444;
+  color: #f3f3f3;
+  border-radius: 1rem;
+  padding: .5rem;
+}
+
+/** tooltip!! **/
+tooltip.background {
+  background-color: #0f0f17;
+  font-size: 18px;
+  border-radius: 10px;
+  color: #bfc9db;
+}
+
+tooltip label {
+  margin: 6px;
+}
+
+
+/** Widgets **/
+
+.language {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.clock_time_sep {
+  font-size: 16px;
+  color: #bfc9db;
+  margin: 0px 4px 1px 4px;
+}
+
+.clock_time_class,
+.clock_minute_class {
+  font-size: 23px;
+}
+
+.clock_date_class {
+  font-size: 18px;
+  margin-right: 0.75rem;
+  margin-left: -1px;
+  margin-bottom: -0.1rem;
+  color: #d7beda;
+}
+
+.clock_minute_class {
+  margin: 0px 8px 0px -8px;
+  color: #f3f3f3;
+}
+
+.clock_time_class {
+  color: #f3f3f3;
+  font-weight: bold;
+  margin: 0px -8px 0px 8px;
+}
+
+.volbar trough highlight {
+  background-image: linear-gradient(to right, #afcee0 30%, #A1BDCE 50%, #77a5bf 100% *50);
+  border-radius: 10px;
+}
+
+.volume-text {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.volume_icon {
+  font-size: 22px;
+  color: #f3f3f3;
+  margin: 0px 10px 0px 10px;
+}
+
+.separ {
+  color: #3e424f;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 0px 8px 0px 8px;
+}
+
+scale trough {
+  all: unset;
+  background-color: #22242b;
+  border-radius: 16px;
+  min-height: 0.75rem;
+  min-width: 70px;
+  margin: 0px 10px 0px 0px;
+}
+
+.song_cover_art {
+  background-size: cover;
+  background-position: center;
+  min-height: 2rem;
+  min-width: 2rem;
+  margin: 10px;
+  border-radius: 100px;
+}
+
+.song {
+  color: #f3f3f3;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 0.25rem;
+  margin-right: 1rem;
+  // margin-top: 0.5rem;
+}
+
+.song_btn_play {
+  color: #f3f3f3;
+  font-size: 16px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.song_btn_play:hover {
+  background-color: rgba(#444, 0.4);
+  border-radius: 1rem;
+}
+
+
+.song_btn_prev,
+.song_btn_next {
+  color: #bfc9db;
+  font-size: 16px;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.song_btn_prev:hover,
+.song_btn_next:hover {
+  color: #bfc9db;
+  background-color: rgba(#444, 0.4);
+  border-radius: 1rem;
+}
+
+// Calendar
+.cal {
+  background-color: rgba(#333, 0.2);
+  padding: 1rem;
+  border-radius: 2rem;
+  font-size: 18px;
+  font-weight: normal;
+
+  .cal-in {
+    color: #f3f3f3;
+    padding-top: 1rem;
+
+    .cal {
+      &.highlight {
+        padding: 20px;
+      }
+
+      padding: .5rem;
+      margin-left: 10px;
+    }
+  }
+}
+
+calendar {
+  color: #f3f3f3;
+}
+
+calendar:selected {
+  color: #333;
+  background-color: #f3f3f3;
+}
+
+calendar.header {
+  color: #eee;
+  font-weight: bold;
+}
+
+calendar.button {
+  color: #f3f3f3;
+}
+
+calendar.button:hover {
+  color: #f3f3f3;
+  background-color: rgba(#444, 0.2);
+  border-radius: 100%;
+}
+
+calendar.highlight {
+  color: #f3f3f3;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: #a1a1a1;
+}
+
+.music_win {
+  min-width: 16rem;
+}
+
+.music_pop {
+  background-color: rgba(#333, 0.2);
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.music_cover_art {
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 170px;
+  min-width: 170px;
+  // margin: 0.5rem;
+  border-radius: 1.5rem;
+}
+
+.music {
+  color: #f3f3f3;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.music_artist {
+  color: #bbc5d7;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0px 0px 0px 0px;
+}
+
+.music_btn_prev {
+  color: #bbc5d7;
+  font-size: 24px;
+  font-weight: normal;
+  margin-left: 1rem;
+  padding: 1rem;
+}
+
+.music_btn_play {
+  color: #f3f3f3;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0px 0px 0px 0px;
+  padding: 1rem;
+}
+
+.music_btn_next {
+  color: #bbc5d7;
+  font-size: 24px;
+  font-weight: normal;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.music_btn_prev:hover,
+.music_btn_play:hover,
+.music_btn_next:hover {
+  background-color: rgba(#444, 0.3);
+  border-radius: 1rem;
+}
+
+.music_bar scale trough highlight {
+  all: unset;
+  background-image: linear-gradient(to right, #afcee0 30%, #A1BDCE 50%, #77a5bf 100% *50);
+  border-radius: 24px;
+}
+
+.music_bar scale trough {
+  all: unset;
+  background-color: #232232;
+  border-radius: 24px;
+  min-height: 0.75rem;
+  min-width: 190px;
+  margin: 10px 10px 20px 0px;
+}
+
+.audio-box {
+  background-color: rgba(#333, 0.2);
+  border-radius: 2rem;
+}
+
+.speaker_icon {
+  background-size: cover;
+  background-image: url('images/speaker.png');
+  background-position: center;
+  min-height: 70px;
+  min-width: 75px;
+  margin: 10px 20px 5px 20px;
+  border-radius: 12px;
+}
+
+.speaker_text {
+  color: #f3f3f3;
+  font-size: 26px;
+  font-weight: bold;
+  margin: 20px 0px 0px 0px;
+}
+
+.speaker_bar scale trough highlight {
+  all: unset;
+  background-image: linear-gradient(to right, #afcee0 30%, #A1BDCE 50%, #77a5bf 100% *50);
+  border-radius: 24px;
+}
+
+.speaker_bar scale trough {
+  all: unset;
+  background-color: #232232;
+  border-radius: 24px;
+  min-height: 0.75rem;
+  min-width: 120px;
+  margin: 0px 0px 5px 0px;
+}
+
+.audio_sep {
+  color: #38384d;
+  font-size: 18px;
+  margin: 0px 0px 0px 0px;
+}
+
+.workspaces-widget {
+  background-color: rgba(#333, 0.2);
+  border-radius: 1rem;
+}
+
+.workspace-entry>box {
+  // background-color: rgba(#333, 0.75);
+  min-width: 32px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.workspace-entry:first-child>box {
+  border-radius: 1rem 0px 0px 1rem;
+}
+
+.workspace-entry:last-child>box {
+  border-radius: 0px 1rem 1rem 0px;
+}
+
+.workspace-entry:first-child:hover,
+.workspace-entry:last-child:hover {
+  border-radius: 1rem;
+}
+
+.workspace-entry:hover>box {
+  background-color: rgba(#444, 0.3);
+  border-radius: 1rem;
+}
+
+.workspace-entry.current>box {
+  background-color: rgba(#6af, 0.2);
+  border-radius: 1rem;
+  color: cyan;
+}
+
+.titlebar {
+  background-color: rgba(#333, 0.2);
+  color: cyan;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.player-btn {
+  font-size: 8px;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.player-btn:hover {
+  background-color: rgba(#444, 0.2);
+}
+
+.powermenu {
+  font-size: 18px;
+  padding: 1rem;
+}
+
+.powermenu>box>box>label {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.powerbtn {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.powerbtn:hover {
+  background-color: rgba(#844, 0.5);
+}
+
+.powermenu_label.revealed {
+  background-color: rgba(#444, 0.3);
+  border-radius: 1rem;
+  transition: ease-in-out;
+}
+
+.tray {
+	padding-left: .625rem;
+	padding-right: .625rem;
+}
+
+.tray window menu {
+	padding: 1rem;
+	border-radius: 1.5rem;
+	background-color: rgba(#333, 0.75);
+}
+
+.tray window menu menuitem {
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+}
+
+.tray window menu menuitem:hover {
+	background-color: rgba(#444, 0.4);
+}
+
+.tray menubar > menuitem:first-child {
+        margin-right: 0.25rem;
+}
+
+.tray menubar > menuitem:last-child {
+        margin-left: 0.25rem;
+}
+
+.tray menubar > menuitem:not(:first-child):not(:last-child) {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+}
+
+.tray window menu separator {
+	border-color: rgba(255,255,255, 0.2);
+	border-style: solid;
+	border-width: 1px;
+	margin: 0.5rem;
+}
+
+// Glass
+.titlebar,
+.module,
+.workspaces-widget,.workspaces-widget .workspace-entry:hover box,
+.music_pop,
+.audio-box,
+.calendar > box,
+.player-btn:hover,
+.music_btn_prev:hover,
+.music_btn_play:hover,
+.music_btn_next:hover,
+.song_btn_prev:hover,
+.song_btn_play:hover,
+.song_btn_next:hover,
+.powermenu_label.revealed,
+.powerbtn:hover {
+	border-style: solid;
+	border-color: white;
+	border-width: 0.01rem;
+}
+
+.powermenu_label.revealed {
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.powerbtn:first-child {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+.powerbtn:first-child:hover {
+  border-left-color: transparent;
+}
+
+// Workaround, so widgets do not expand on hover
+.workspaces-widget .workspace-entry box,
+.player-btn,
+.music_btn_prev,
+.music_btn_play,
+.music_btn_next,
+.song_btn_prev,
+.song_btn_play,
+.song_btn_next,
+.powerbtn {
+	border-width: 0.01rem;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.weather {
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+
+  label {
+    font-size: 1.5rem;
+  }
+}
+
+.volumes {
+  .modules-2 {
+    padding: 0px;
+    margin: 0px;
+  }
+  .app_volume_container {
+    padding: 1rem;
+    .app_volume_name {
+      margin-right: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: rgba(0,0,0, 0.1);
+      border-radius: 1rem;
+    }
+
+    label {
+      font-size: 1.2rem;
+    }
+  }
+  .app_volume_container:not(:first-child):not(:last-child) {
+    padding-top: 1rem;
+    padding-bottom: 0px;
+  }
+}
+  

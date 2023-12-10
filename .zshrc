@@ -1,5 +1,8 @@
 # Path
 export PATH="$PATH:/home/delta/.yarn/bin"
+export PATH="$PATH:/home/delta/.cargo/bin"
+export PATH="$PATH:/opt/flutter/bin"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -39,3 +42,9 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Enable conda
+[ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
+[ -f $HOME/.local/bin/.imgurs_completions.zsh ] && source $HOME/.local/bin/.imgurs_completions.zsh
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+
+alias vim=nvim

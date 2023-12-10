@@ -1,0 +1,38 @@
+.dashboard {
+    border-radius: 2rem;
+    font-family: Montserrat;
+    box {
+        border-radius: 1rem;
+        margin: 1rem;
+        
+        .image-holder {
+            min-width: 512px;
+            min-height: 768px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+            label {
+                font-size: 5rem;
+                font-weight: bold;
+                background-color: rgba(#000, .2);
+                text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+                1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;;
+            }
+        }
+    }
+}
+
+.meminfo {
+    background-color: #444;
+    padding: 1rem;
+
+    progressbar {
+        min-height: 8rem;
+
+        trough {
+            min-width: 2px;
+            color: white;
+            background-color: white;
+        }
+    }
+}

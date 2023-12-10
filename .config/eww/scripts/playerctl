@@ -1,0 +1,96 @@
+#! /bin/bash
+
+# playersJson=$(playerctl -l | jq --slurp --raw-input 'split("\n") | .[:-1] | to_entries | map({id: .key, value: .value})')
+# player=$(eww get player)
+# currentIndex=$(echo $player | jq -r -Mc '.id')
+
+# echo $playersJson
+# echo $player
+
+# i=$(expr $currentIndex + 1)
+# eww update player="$(echo $playersJson | jq -r -MC --argjson i $i 'map(select(.id == $i)) | .[]')"
+# echo $(eww get player)
+
+## Execute accordingly
+# if [[ "$1" == "title" ]]; then
+# 	playerctl --player="$(eww get player)" metadata title
+# elif [[ "$1" == "artist" ]]; then
+# 	playerctl --player="$(eww get player)" metadata artist
+# elif [[ "$1" == "position" ]]; then
+#     if [[ -z "$2" ]]; then
+# 	    playerctl --player="$(eww get player)" position
+#     else
+#         playerctl --player="$(eww get player)" position "$2"
+#         echo $1
+#         echo $2
+#     fi
+# elif [[ "$1" == "status" ]]; then
+# 	$status=$(playerctl --player="$(eww get player)" status)
+# 	if [[ $status -eq "Plaing" ]]; then
+# 		printf " 󰏤"
+# 	elif [[ $status -eq "Paused" ]]; then
+# 		printf " 󰐊"
+# 	fi
+# elif [[ "$1" == "art" ]]; then
+# 	playerctl --player="$(eww get player)" metadata mpris:artUrl
+# elif [[ "$1" == "prev" ]]; then
+# 	playerctl --player="$(eww get player)" previous
+# elif [[ "$1" == "playpause" ]]; then
+# 	playerctl --player="$(eww get player)" play-pause
+# elif [[ "$1" == "next" ]]; then
+# 	playerctl --player="$(eww get player)" next
+# elif [[ "$1" == "--next" ]]; then
+# 	{ mpc -q next; get_cover; }
+# elif [[ "$1" == "--prev" ]]; then
+# 	{ mpc -q prev; get_cover; }
+# fi
+
+exclude=$(playerctl -l | grep edge)
+playerctl="playerctl -i $exclude"
+
+if [[ "$1" == "title" ]]; then
+	$playerctl metadata title
+elif [[ "$1" == "artist" ]]; then
+	$playerctl metadata artist
+elif [[ "$1" == "position" ]]; then
+    if [[ -z "$2" ]]; then
+	    $playerctl position
+    else
+        $playerctl position "$2"
+        echo $1
+        echo $2
+    fi
+elif [[ "$1" == "status" ]]; then
+	pstatus=$(playerctl status)
+	if [[ $pstatus == *"Playing"* ]]; then
+		echo " 󰏤"
+	elif [[ $pstatus == *"Paused"* ]]; then
+		echo " 󰐊"
+	fi
+elif [[ "$1" == "art" ]]; then
+	$playerctl metadata mpris:artUrl
+elif [[ "$1" == "prev" ]]; then
+	$playerctl previous
+elif [[ "$1" == "playpause" ]]; then
+	$playerctl play-pause
+elif [[ "$1" == "next" ]]; then
+	$playerctl next
+elif [[ "$1" == "follow" ]]; then
+	printf 'null\r\n' | tail -f 
+    if [[ "$2" == "metadata" ]]; then
+		$playerctl --follow metadata --format '{\"title\":\"{{title}}\",\"artist\":\"{{artist}}\"}'
+	elif [[ "$2" == "title" ]]; then
+		$playerctl --follow metadata --format '{{title}}'
+	elif [[ "$2" == "artist" ]]; then
+		$playerctl --follow metadata --format '{{artist}}'
+	elif [[ "$2" == "art" ]]; then
+		$playerctl --follow metadata --format '{{mpris:artUrl}}'
+    fi
+elif [[ "$1" == "poll" ]]; then
+	if [[ "$2" == "total" ]]; then
+		$playerctl --follow metadata --format '{{ mpris:length/1000000 }}'
+	elif [[ "$2" == "position" ]]; then
+		$playerctl --follow metadata --format '{{ position/1000000 }}'
+	fi
+fi
+

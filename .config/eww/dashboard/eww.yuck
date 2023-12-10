@@ -1,0 +1,39 @@
+(defpoll mem_usage :interval "2s" "expr $(eww get EWW_RAM | jq -Mc .used_mem) / $(eww get EWW_RAM | jq -Mc .total_mem) * 100")
+
+(defwindow dashboard
+    :monitor 1
+    :geometry (geometry 
+        :x "0%"
+        :y "0%"
+        :width "512px"
+        :heigth "128px"
+        :anchor "center center")
+    :stacking "bg" ; bg
+    :windowtype "dock" ; desktop
+    :class "dashboard"
+    (box
+        :orientation "horizontal"
+        (box 
+            :style "background-image: url('./waifu_temp')"
+            :class "image-holder"
+            :vexpand "true"
+            (label :text "hello")
+        )
+        (box
+            :orientation "vertical"
+            :valign "start"
+            :halign "fill"
+            (meminfo)
+        )
+    )
+)
+
+(defwidget meminfo []
+    (box 
+        :class "meminfo"
+        (label :text "memory")
+        (progress
+            :value mem_usage
+        )
+    )
+)

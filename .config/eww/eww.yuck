@@ -1,0 +1,385 @@
+;; Variables
+(defpoll clock_time :interval "5m" "date +\%H")
+(defpoll clock_minute :interval "5s" "date +\%M")
+(defpoll clock_date :interval "10h" "date '+%d %b %Y'")
+(defpoll volume_percent :initial 100 :interval "3s" "wpctl get-volume @DEFAULT_SINK@ | sed 's/Volume: //g' | awk '{print $0 * 100}'")
+(defvar vol_reveal false)
+(defvar music_reveal false)
+(defvar powermenu_reveal false)
+(defvar time_rev false)
+(defvar lang_rev false)
+; (deflisten workspace "scripts/workspace")
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(deflisten active_layout :initial "ENG" "bash ~/.config/eww/scripts/get-active-layout")
+(deflisten window_title :initial "null" "bash ~/.config/eww/scripts/get-active-window")
+(deflisten window_class :initial "null" "bash ~/.config/eww/scripts/get-window-class")
+
+(defvar eww "/usr/bin/eww -c $HOME/.config/eww")
+
+; (deflisten playerctl :initial "{}" "playerctl --follow metadata --format '{\"title\":\"{{title}}\",\"artist\":\"{{artist}}\"}'")
+; (defpoll song :interval "5s"  "bash ~/.config/eww/scripts/playerctl title")
+; (defpoll song_artist :interval "5s"  "bash ~/.config/eww/scripts/playerctl artist")
+; (defpoll cover_art :interval "5s"  "bash ~/.config/eww/scripts/playerctl art")
+; (defpoll song_status :interval "2s"  "bash ~/.config/eww/scripts/playerctl status")
+; (defpoll song_total :interval "5s" "playerctl metadata --format '{{ duration(mpris:length) }}' | awk -F: '{ print ($1 * 60) + $2 }'")
+; (defpoll current_status :interval "1s"  "bash ~/.config/eww/scripts/playerctl position")
+;;
+; (deflisten song :initial "" "playerctl -i edge.instance1439 --follow metadata --format {{title}}")
+; (deflisten song_artist :initial "" "playerctl -i edge.instance1439 --follow metadata --format {{artist}}")
+; (deflisten cover_art :initial "" "playerctl -i edge.instance1439 --follow metadata --format {{mpris:artUrl}}")
+(deflisten song_status :initial ""  "bash ~/.config/eww/scripts/get-playpause")
+; (defpoll song_total :interval "5s" "playerctl -i edge.instance1439 metadata --format '{{ mpris:length/1000000 }}'")
+; (defpoll current_status :interval "1s"  "playerctl -i edge.instance1439 metadata --format '{{ position/1000000 }}'")
+;;
+(defvar player "spotify")
+(defvar playerJ "spotify")
+(defpoll playersJ :interval "5s" "playerctl -l | jq --slurp -Mc --raw-input 'split(\"\\n\") | .[:-1] | to_entries | map({id: .key, value: .value})'")
+
+(deflisten song :initial "" "bash ~/.config/eww/scripts/playerctl follow title")
+(deflisten playerctl :initial "{}" "bash ~/.config/eww/scripts/playerctl follow metadata")
+(deflisten song_artist :initial "" "bash ~/.config/eww/scripts/playerctl follow artist")
+(deflisten cover_art :initial "" "bash ~/.config/eww/scripts/playerctl follow art")
+(deflisten song_total :initial 0 "bash ~/.config/eww/scripts/playerctl poll total")
+(deflisten current_status :initial 0 "bash ~/.config/eww/scripts/playerctl poll position")
+
+
+(defpoll calendar_day :interval "20h" "date '+%d'")
+(defpoll calendar_year :interval "20h" "date '+%Y'")
+
+;; widgets
+(defwidget sep []
+  (box :class "module-2" :vexpand "false" :hexpand "false"
+    (label :class "separ" :text "|")))
+
+(defwidget language []
+    (box :class "language module" :orientation "h"
+        (button :class "lang-btn"
+                :onclick "hyprctl switchxkblayout turing-gaming-keyboard-turing-gaming-keyboard next"        
+        active_layout)
+    )
+)
+
+(defwidget clock_module []
+  (eventbox :onhover "${eww} update time_rev=true"
+			  :onhoverlost "${eww} update time_rev=false"
+			  :onrightclick "swaync-client -t"
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+      (label :text clock_time :class "clock_time_class" )
+      (label :text ":" :class "clock_time_sep" )
+      (label :text clock_minute :class "clock_minute_class")
+	  (revealer :transition "slideleft"
+			  :reveal time_rev
+			  :duration "350ms"
+      (button :class "clock_date_class"
+            ;  :onclick "$HOME/.config/eww/scripts/pop calendar"
+			:onclick "eww open calendar --toggle"
+			 clock_date
+        )
+  ))))
+  
+(defwidget volume []
+  (eventbox :onhover "${eww} update vol_reveal=true"
+			:onhoverlost "${eww} update vol_reveal=false"
+  (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+	(button
+		:onrightclick "eww open audio_ctl --toggle --screen 1" 
+		:onclick "eww open volumes_win --toggle"
+		:class "volume_icon" "󰕾")
+	(revealer :transition "slideleft"
+			  :reveal vol_reveal
+			  :duration "350ms"
+			  (box
+				(scale    :class "volbar"
+				:value volume_percent
+				:orientation "h"
+				:tooltip "${volume_percent}%"
+				:max 101
+				:min 0
+				:round-digits 0
+				:onchange "wpctl set-volume @DEFAULT_SINK@ {}%" )
+				(label :class "volume-text" :text "${volume_percent}%" :valign "center" :halign "center" )
+			)
+            )
+        )
+    )
+)
+
+	;;  Music 
+(defwidget music [] 
+  (eventbox :onhover "${eww} update music_reveal=true" :class "module"
+			  :onhoverlost "${eww} update music_reveal=false"
+		(box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+			(box :class "song_cover_art" :vexpand "false" :hexpand "true" :valign "center" :style "background-image: url('${cover_art == '' ? "file:///home/delta/.config/eww/images/music.png" : cover_art}'); background-size: ${cover_art == '' ? "contain" : "cover"}")
+			(button :class "song" :onclick "eww open music_win --screen 1 --toggle" :tooltip "${song} - ${song_artist}" (label :limit-width 40 :text song))
+	    (revealer :transition "slideright"
+			      :reveal music_reveal
+			      :duration "350ms"
+          (box :vexpand "false" :hexpand "false" :orientation "h" :spacing 4
+                    (button :class "song_btn_prev" :onclick "bash ~/.config/eww/scripts/playerctl prev" "󰒮")
+					(button :class "song_btn_play" :onclick "bash ~/.config/eww/scripts/playerctl playpause" {song_status == "Playing" ? "󰏤" : "󰐊"})
+					(button :class "song_btn_next" :onclick "bash ~/.config/eww/scripts/playerctl next" "󰒭"))))))
+
+(defwidget tray []
+	(box :class "tray module" :orientation "h"
+		(systray :class "systray")
+)
+)
+
+(defwidget right []
+	(box :orientation "h" 
+		:space-evenly false
+        :spacing 10
+        :halign "end"
+		:class "right_modules"
+		(music)
+		(tray)
+		(weather)
+        (language)
+        (volume)
+        (clock_module)
+		(powermenu)
+        )
+    )
+
+
+(defwidget left []
+	(box :orientation "h" 
+		 :space-evenly false  
+         :halign "start"
+		 :class "left_modules"
+(titlebar)))
+
+
+(defwidget center []
+	(box :orientation "h" 
+	     :space-evenly false  
+         :halign "center"
+	     :class "center_modules"
+(workspaces)))
+
+(defwidget bar_1 []
+  (centerbox :class "bar_class"
+       :orientation "h"
+	   :hexpand false
+	   	(left)
+  		(center)
+		(right)
+    ))
+
+(defwindow bar
+          :geometry (geometry :x "0%"
+                       :y "9px"
+                       :width "98.5%"
+                       :height "30px"
+                       :anchor "top center")
+          :stacking "fg"
+		  :monitor 1
+		  :namespace "eww-top-bar"
+		  :exclusive "true"
+          :windowtype "dock"
+  (bar_1))
+
+; (defwindow left_bar
+; 	:geometry (geometry
+; 		:x "0.75%"
+; 		:y "0.75%"
+; 		:height "30px"
+; 		:anchor "top left"
+; 	)
+; 	:stacking "fg"
+; 	:monitor 1
+; 	:namespace "eww-top-left-bar"
+; 	:exclusive "true"
+; 	:windowtype "dock"
+; 	(box :class "bar_class" :orientation "h"
+; 		(left)
+; 	)
+; )
+
+; (defwindow right_bar
+; 	:geometry (geometry
+; 		:x "0.75%"
+; 		:y "0.75%"
+; 		:height "30px"
+; 		:anchor "top right"
+; 	)
+; 	:stacking "fg"
+; 	:monitor 1
+; 	:namespace "eww-top-right-bar"
+; 	:exclusive "true"
+; 	:windowtype "dock"
+; 	(box :class "bar_class" :orientation "h"
+; 		(right)
+; 	)
+; )
+
+(defwidget cal []
+	(box :class "cal" :orientation "v"
+	(box :class "cal-in"
+	(calendar :class "cal" 
+			  :day calendar_day 
+			  :year calendar_year))))
+
+(defwindow calendar
+	:namespace "eww-calendar"
+	:monitor 1
+	:geometry (geometry :x "20px" 
+						:y "1%" 
+                        :anchor "top right"
+						:width "270px" 
+						:height "60px")
+(cal))
+
+
+
+(defwidget audio []
+	(box :class "audio-box" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
+	(box :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+	(box :class "speaker_icon" :orientation "v")
+	(box :orientation "v" :halign "center" :vexpand "false" :hexpand "false"
+    (label :class "speaker_text" :text "Звук" :valign "center" :halign "left" )
+	(box :class "speaker_bar" :halign "center" :vexpand "false" :hexpand "false"
+	(scale    :value volume_percent
+              :space-evenly "false"
+			  :orientation "h"
+			  :onchange "wpctl set-volume @DEFAULT_SINK@ {}%" 
+              :tooltip "${volume_percent}%"
+			  :max 151
+			  :min 0))))
+	))
+
+(defwindow audio_ctl
+	:namespace "eww-audio"
+	:geometry (geometry :x "20px" 
+						:y "1%" 
+                        :anchor "top right"
+						:width "280px" 
+						:height "60px")
+(audio))
+
+;;  Music
+(defwidget music_pop []
+		(box :class "music_pop" :orientation "h" :space-evenly "true" :vexpand "false" :hexpand "true"
+			(box :class "music_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art == '' ? "file:///home/delta/.config/eww/images/music.png" : cover_art}'); background-size: ${cover_art == '' ? "auto" : "cover"}")
+			(box :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+				(label :halign "center" :class "music" :wrap "true" :limit-width 13 :text song :tooltip song)
+				(label :halign "center" :class "music_artist" :wrap "true" :limit-width 15 :text song_artist :tooltip song_artist)
+				(box :orientation "h" :spacing 15 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+					(button :class "music_btn_prev" :onclick "~/.config/eww/scripts/playerctl prev" "󰒮")
+					(button :class "music_btn_play" :onclick "~/.config/eww/scripts/playerctl playpause" {song_status == "Playing" ? "󰏤" : "󰐊"})
+					(button :class "music_btn_next" :onclick "~/.config/eww/scripts/playerctl next" "󰒭"))
+				(box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
+					(scale :onchange "bash ~/.config/eww/scripts/playerctl position {}" :min 0 :active "true" :max song_total :value current_status))
+					(box :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
+					(button :class "player-btn" :onclick "playerctld shift" "shift player")
+					(for player in playersJ
+						(button :class "player-btn" :onclick "eww update player=${player.value}" {player.value})
+					))
+				)))
+
+
+;;  music
+(defwindow music_win :stacking "fg" :focusable "false" :screen 1 :namespace "eww-music"
+	    :geometry (geometry :x "0" :y "1%" :width 512 :height 128 :anchor "top center")
+			(music_pop))
+
+;;  workspaces
+(defwidget workspaces []
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget" 
+    (box :space-evenly true
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}" :class "workspace-entry ${workspace.active == true ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+          (box
+            (label :text "${workspace.id}")
+            )
+          )
+        )
+      )
+    )
+  )
+
+;;  title
+(defwidget titlebar []
+	(box :class "titlebar"
+		; (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('file:///usr/share/icons/hicolor/scalable/apps/${window_class}.svg');")
+		(label :text window_title :limit-width 130)
+	)
+)
+
+(defwidget powermenu []
+	(eventbox :onhover "${eww} update powermenu_reveal=true" :class "powermenu module ${powermenu_reveal ? "revealed" : ""}"
+			  :onhoverlost "${eww} update powermenu_reveal=false"
+		(box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+		(box :class "powermenu_label ${powermenu_reveal ? "revealed" : ""}"
+		(label :text "󰗼"))
+	    (revealer :transition "slideright"
+			      :reveal powermenu_reveal
+			      :duration "350ms"
+          (box :vexpand "false" :hexpand "false" :orientation "h" :spacing 4
+                    (button :class "powerbtn shutdown" :onmiddleclick "shutdown now" "")
+					(button :class "powerbtn reboot" :onmiddleclick "reboot" "")
+					; (button :class "powerbtn lock" :onmiddleclick "swaylock -f -e -c 000000 -i ~/.config/wofi/archlogo.svg -s center" "")
+					(button :class "powerbtn lock" :onmiddleclick "gtklock -m /usr/lib/gtklock/userinfo-module.so -m /usr/lib/gtklock/playerctl-module.so -m /usr/lib/gtklock/powerbar-module.so -d" "")
+					(button :class "powerbtn windows" :onmiddleclick "systemctl reboot --boot-loader-entry=auto-windows" "󰍲"))))))
+
+;; wheater
+(defpoll temperature :interval "30m" "/home/delta/.config/eww/scripts/get-weather")
+(defwidget weather []
+	(box :class "weather module" :orientation "h"
+	(box :class "module-2" :orientation "h" :halign "center" :valign "center"
+		(label :text "${temperature}°C")
+)))
+
+;; app volumes
+; (defpoll volumes_json :interval "5s" :initial "[]" "bash ~/appvol.sh")
+(deflisten volumes_json :initial "[]" "bash ~/.config/eww/scripts/vollisten.sh")
+(defwidget volumes []
+	(box :class "volumes module" :orientation "h" :hexpand true
+		(box :class "module-2" :orientation "v"
+			:hexpand true
+			(for app in volumes_json
+				(box :orientation "h"
+					:class "app_volume_container"
+					:hexpand true
+					:space-evenly false
+					(label 
+						:text "${app.name}" 
+						:halign "start" 
+						:hexpand false 
+						:limit-width 15 
+						:wrap true
+						:class "app_volume_name")
+					(scale 
+						:class "volbar" 
+						:orientation "h" 
+						:round-digits 0 
+						:min 0 
+						:max 101 
+						:onchange "pactl set-sink-input-volume ${app.id} {}%" 
+						:value "${app.front-left}"
+						:hexpand true
+					)
+					(label
+						:text "${app.front-left}%"
+					)
+				)
+			)
+		)
+	)
+)
+
+(defwindow volumes_win 
+	:stacking "fg" 
+	:focusable "false"
+	:monitor 1
+	:namespace "eww-music"
+	:geometry (
+		geometry :x "1%" :y "1%" 
+		:width 512
+		:height 128
+		:anchor "top right"
+	)
+	(volumes)
+)

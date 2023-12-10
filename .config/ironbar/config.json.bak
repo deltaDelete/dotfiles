@@ -1,0 +1,178 @@
+{
+    "icon_theme": "default",
+    "ironvar_defaults": {
+        "power_btn_style": "clickable widget expand-affected",
+        "show_power": "false"
+    },
+    "monitors": {
+        "DP-1": {
+            "position": "top",
+            "height": 64,
+            "start": [
+                {
+                    "type": "focused",
+                    "show_icon": false,
+                    "show_title": true,
+                    "icon_size": 24,
+                    "truncate": "end"
+                }
+            ],
+            "center": [
+                {
+                    "type": "workspaces",
+                    "all_monitors": true,
+                    "name_map": {
+                      "1": "1",
+                      "2": "2",
+                      "3": "3",
+                      "4": "4",
+                      "5": "",
+                      "6": "󰓓"
+                    }
+                }
+            ],
+            "end": [
+                {
+                    "type": "music",
+                    "player_type": "mpris"
+                },
+                {
+                    "type": "tray"
+                },
+                {
+                    "type": "clipboard"
+                },
+                {
+                    "type": "custom",
+                    "bar": [
+                        {
+                            "label": "󰕾",
+                            "name": "volume-btn",
+                            "on_click": "popup:toggle",
+                            "type": "button"
+                        }
+                    ],
+                    "class": "volume-menu",
+                    "popup": [
+                        {
+                            "orientation": "vertical",
+                            "type": "box",
+                            "widgets": [
+                                {
+                                    "label": "Звук",
+                                    "name": "header",
+                                    "type": "label"
+                                },
+                                {
+                                    "type": "slider",
+                                    "step": 1,
+                                    "length": 100,
+                                    "max": 100,
+                                    "on_change": "!500:/home/delta/.config/ironbar/setvol.sh $0",
+                                    "value": "/home/delta/.config/ironbar/getvol.sh"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "clock",
+                    "format": "%H:%M %d.%m.%Y",
+                    "class": "clickable"
+                },
+                {
+                    "on_mouse_enter": "ironbar set show_power true; ironbar set power_btn_style 'clickable widget expand-affected'",
+                    "on_mouse_exit": "ironbar set show_power false; ironbar set power_btn_style 'clickable widget'",
+                    "bar": [
+                        {
+                            "label": "",
+                            "name": "power-btn",
+                            "class": "{{!500:ironbar get power_btn_style}}",
+                            "on_click": "popup:toggle",
+                            "type": "button"
+                        },
+                        {
+                            "show_if": "#show_power",
+                            "type": "box",
+                            "orientation": "horizontal",
+                            "widgets": [
+                                {
+                                    "class": "power-btn clickable",
+                                    "label": "",
+                                    "on_click": "!shutdown now",
+                                    "type": "button"
+                                },
+                                {
+                                    "class": "power-btn clickable",
+                                    "label": "",
+                                    "on_click": "!systemctl reboot",
+                                    "type": "button"
+                                },
+                                {
+                                    "class": "power-btn clickable",
+                                    "label": "",
+                                    "on_click": "!gtklock -m /usr/lib/gtklock/userinfo-module.so -m /usr/lib/gtklock/playerctl-module.so -m /usr/lib/gtklock/powerbar-module.so -d",
+                                    "type": "button"
+                                },
+                                {
+                                    "class": "power-btn clickable",
+                                    "label": "󰍲",
+                                    "on_click": "!systemctl reboot --boot-loader    -entry=auto-windows",
+                                    "type": "button"
+                                }
+                            ]
+                        }
+                    ],
+                    "class": "power-menu",
+                    "popup": [
+                        {
+                            "orientation": "vertical",
+                            "type": "box",
+                            "class": "popup",
+                            "name": "power-menu-popup",
+                            "widgets": [
+                                {
+                                    "label": "Питание",
+                                    "name": "header",
+                                    "type": "label"
+                                },
+                                {
+                                    "type": "box",
+                                    "orientation": "vertical",
+                                    "widgets": [
+                                        {
+                                            "class": "power-btn clickable",
+                                            "label": "<span font-size='40pt'></span>",
+                                            "on_click": "!shutdown now",
+                                            "type": "button"
+                                        },
+                                        {
+                                            "class": "power-btn clickable",
+                                            "label": "<span font-size='40pt'></span>",
+                                            "on_click": "!systemctl reboot",
+                                            "type": "button"
+                                        },
+                                        {
+                                            "class": "power-btn clickable",
+                                            "label": "<span font-size='40pt'></span>",
+                                            "on_click": "!gtklock -m /usr/lib/gtklock/userinfo-module.so -m /usr/lib/gtklock/playerctl-module.so -m /usr/lib/gtklock/powerbar-module.so -d",
+                                            "type": "button"
+                                        },
+                                        {
+                                            "class": "power-btn clickable",
+                                            "label": "<span font-size='40pt'>󰍲</span>",
+                                            "on_click": "!systemctl reboot --boot-loader    -entry=auto-windows",
+                                            "type": "button"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "tooltip": "Up: {{30000:uptime -p | cut -d ' ' -f2-}}",
+                    "type": "custom"
+                }
+            ]
+        }
+    }
+}

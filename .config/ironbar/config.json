@@ -1,0 +1,177 @@
+{
+    "icon_theme": "Win11-blue-dark",
+    "ironvar_defaults": {
+        "power_btn_style": "clickable widget expand-affected",
+        "show_power": "false",
+        "show_power_not": "true",
+        "show_volume": "false"
+    },
+    "monitors": {
+        "DP-1": {
+            "position": "top",
+            "height": 64,
+            "start": [
+                {
+                    "type": "launcher",
+                    "icon_size": 24
+                },
+                {
+                    "type": "focused",
+                    "show_icon": true,
+                    "show_title": true,
+                    "icon_size": 24,
+                    "truncate": {
+                        "mode": "end",
+                        "max_length": 95
+                    }
+                }
+            ],
+            "center": [
+                {
+                    "type": "workspaces",
+                    "all_monitors": true,
+                    "name_map": {
+                      "1": "󰇩",
+                      "2": "2",
+                      "3": "3",
+                      "4": "",
+                      "5": "",
+                      "6": "󰓓",
+                      "7": "󰙯"
+                    }
+                }
+            ],
+            "end": [
+                {
+                    "type": "music",
+                    "player_type": "mpris",
+                    "irons": {
+                        "play": "",
+                        "pause": ""
+                    },
+                    "cover_image_size": 256,
+                    "format": "{title} - {artist}"
+                },
+                {
+                    "type": "tray"
+                },
+                {
+                    "type": "clipboard"
+                },
+                {
+                    "class": "language clickable",
+                    "on_click_left": "hyprctl switchxkblayout turing-gaming-keyboard-turing-gaming-keyboard next",
+                    "type": "label",
+                    "label": "{{watch:bash ~/.config/eww/scripts/get-active-layout}}"
+                },
+                {
+                    "type": "custom",
+                    "on_mouse_enter": "ironbar set show_volume true",
+                    "on_mouse_exit": "ironbar set show_volume false",
+                    "bar": [
+                        {
+                            "label": "󰕾",
+                            "name": "volume-btn",
+                            "on_click": "popup:toggle",
+                            "type": "button"
+                        },
+                        {
+                            "type": "slider",
+                            "show_if": "#show_volume",
+                            "show_label": false,
+                            "step": 1,
+                            "tooltip": "{{wpctl get-volume @DEFAULT_SINK@ | sed 's/Volume: //g' | awk '{print $0 * 100}'}}",
+                            "length": 100,
+                            "max": 100,
+                            "on_change": "!500:wpctl set-volume @DEFAULT_SINK@ $0%",
+                            "value": "wpctl get-volume @DEFAULT_SINK@ | sed 's/Volume: //g' | awk '{print $0 * 100}'"
+                        }
+                    ],
+                    "class": "volume-menu",
+                    "popup": [
+                        {
+                            "orientation": "vertical",
+                            "type": "box",
+                            "widgets": [
+                                {
+                                    "label": "Звук",
+                                    "name": "header",
+                                    "type": "label"
+                                },
+                                {
+                                    "type": "slider",
+                                    "step": 1,
+                                    "length": 100,
+                                    "max": 100,
+                                    "on_change": "!500:/home/delta/.config/ironbar/setvol.sh $0",
+                                    "value": "/home/delta/.config/ironbar/getvol.sh"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "clock",
+                    "format": "%H:%M",
+                    "class": "clickable"
+                },
+                {
+                    "on_mouse_enter": "ironbar set show_power true; ironbar set show_power_not false",
+                    "on_mouse_exit": "ironbar set show_power false; ironbar set show_power_not true",
+                    "bar": [
+                        {
+                            "label": "󰗼",
+                            "name": "power-btn",
+                            "on_click": "popup:toggle",
+                            "type": "label",
+                            "show_if": "#show_power_not"
+                        },
+                        {
+                            "label": "󰗼",
+                            "name": "power-btn",
+                            "class": "active",
+                            "on_click": "popup:toggle",
+                            "type": "label",
+                            "show_if": "#show_power"
+                        },
+                        {
+                            "show_if": "#show_power",
+                            "type": "box",
+                            "name": "power-button-holder",
+                            "orientation": "horizontal",
+                            "widgets": [
+                                {
+                                    "class": "power-button-inner",
+                                    "label": "",
+                                    "on_click_middle": "shutdown now",
+                                    "type": "button"
+                                },
+                                {
+                                    "class": "power-button-inner",
+                                    "label": "",
+                                    "on_click_middle": "systemctl reboot",
+                                    "type": "button"
+                                },
+                                {
+                                    "class": "power-button-inner",
+                                    "label": "",
+                                    "on_click_middle": "gtklock -m /usr/lib/gtklock/userinfo-module.so -m /usr/lib/gtklock/playerctl-module.so -m /usr/lib/gtklock/powerbar-module.so -d",
+                                    "type": "button"
+                                },
+                                {
+                                    "class": "power-button-inner",
+                                    "label": "󰍲",
+                                    "on_click_middle": "systemctl reboot --boot-loader-entry=auto-windows",
+                                    "type": "button"
+                                }
+                            ]
+                        }
+                    ],
+                    "class": "power-menu",
+                    "tooltip": "Up: {{30000:uptime -p | cut -d ' ' -f2-}}",
+                    "type": "custom"
+                }
+            ]
+        }
+    }
+}

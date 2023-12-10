@@ -1,0 +1,14 @@
+#! /bin/bash
+
+# curl -s 'https://api.open-meteo.com/v1/forecast?latitude=53.7156&longitude=91.4292&hourly=temperature_2m&windspeed_unit=ms&timezone=Asia%2FBangkok&forecast_days=1' | jq '[.hourly.time, .hourly.temperature_2m] | transpose | map({key: .[0], value: .[1]}) | from_entries' | jq ".\"$(date +'%Y-%m-%dT%H:00')\""
+
+# Широта
+lat=53.844601
+# Долгота
+lon=91.381294
+# Ключ API OpenWeatherMap
+api=e58b2eeb993a74948f0dd71bd9b2ada0
+# Запрос к API, возвращающий JSON
+result=$(curl -s "https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api}&units=metric")
+# Получаем температуру из JSON и округляем до целого
+echo $result | jq '.main.temp | tonumber | floor'

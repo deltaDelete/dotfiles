@@ -1,0 +1,15 @@
+{
+    "configurations": [
+    {
+        "type": "bashdb",
+        "request": "launch",
+        "name": "Bash-Debug (hardcoded script name)",
+        "cwd": "${workspaceFolder}",
+        "program": "${workspaceFolder}/scripts/playerctl",
+        "args": [
+            "next"
+        ],
+        "pathBash": "/bin/bash"
+    }
+    ]
+}
