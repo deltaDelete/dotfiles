@@ -12,6 +12,9 @@ Plugin 'williamboman/mason-lspconfig.nvim'
 Plugin 'neovim/nvim-lspconfig'
 Plugin 'simrat39/rust-tools.nvim'
 Plugin 'vimsence/vimsence'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'jose-elias-alvarez/null-ls.nvim'
+Plugin 'zioroboco/nu-ls.nvim'
 
 call vundle#end()
 
@@ -25,3 +28,4 @@ set smartindent
 set mouse=v
 set number
 set cursorline
+

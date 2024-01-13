@@ -94,7 +94,7 @@ label {
     border-width: 0.1rem;
     border-style: solid;
     border-color: transparent;
-    border-radius: 0.85rem;
+    border-radius: 1rem;
 }
 
 .workspaces .item.focused {
@@ -140,7 +140,7 @@ label {
     border-width: 0.1rem;
     border-style: solid;
     border-color: transparent;
-    border-radius: 0.85rem;
+    border-radius: 1rem;
 }
 
 .widget.music:hover {
@@ -206,7 +206,7 @@ revealer > .widget.clickable:hover {
     border-width: 0.1rem;
     border-style: solid;
     border-color: transparent;
-    border-radius: 0.85rem;
+    border-radius: 1rem;
 }
 
 .tray menuitem:hover {
@@ -214,12 +214,19 @@ revealer > .widget.clickable:hover {
     background-color: rgba(102, 170, 255, 0.2);
 }
 
-.popup menu {
-    background-color: rgba(48, 48, 48, 0.95);
+.popup > menu {
+    background-color: rgba(48, 48, 48, 0.5);
     border-width: 0.0125rem;
     border-color: white;
     border-radius: 1rem;
     border-style: solid;
+}
+
+.tray > menuitem > window {
+    /*background-color: rgba(48, 48, 48, 0.5);*/
+    padding: 0px;
+    background-color: transparent;
+    border: none;
 }
 
 .popup menuitem label {
@@ -245,7 +252,7 @@ revealer > .widget.clickable:hover {
     border-width: 0.01rem;
     border-style: solid;
     border-color: white;
-    border-radius: 0.85rem;
+    border-radius: 1rem;
 }
 
 .popup-music .controls > button:first-child {
@@ -265,13 +272,14 @@ revealer > .widget.clickable:hover {
     border-width: 0.01rem;
     border-style: solid;
     border-color: white;
-    border-radius: 0.85rem;
+    border-radius: 1rem;
 }
 
 /* END MUSIC */
 
 scale slider {
     margin: -5px;
+    margin-left: 9px;
     border-style: solid;
     border-width: 0.1rem;
     /* border-color: rgba(102, 170, 255, 0.95);
@@ -306,9 +314,11 @@ scale trough {
     padding-right: 1rem;
 }
 
+/*
 .launcher .item.open {
     border-bottom-color: rgba(102, 170, 255, 0.95);
 }
+*/
 
 .launcher .item.urgent {
     border-bottom-color: brown;

@@ -1,4 +1,27 @@
 #! /bin/sh
 
-export PATH="$PATH:/home/delta/.dotnet/tools:/home/delta/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-export PATH="$PATH:/home/delta/.local/share/JetBrains/Toolbox/scripts"
+PATH_ARRAY=(
+    "$HOME/.dotnet/tools"
+    "$HOME/.local/share/flatpak/exports/bin"
+    "/var/lib/flatpak/exports/bin"
+    "/usr/lib/jvm/default/bin"
+    "/usr/bin/site_perl"
+    "/usr/bin/vendor_perl"
+    "/usr/bin/core_perl"
+    "$HOME/.local/share/JetBrains/Toolbox/scripts"
+    "$HOME/.yarn/bin"
+    "$HOME/.cargo/bin"
+)
+
+# export PATH="$PATH:/home/delta/.dotnet/tools:/home/delta/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+# export PATH="$PATH:/home/delta/.local/share/JetBrains/Toolbox/scripts"
+# export PATH="$PATH:/home/delta/.yarn/bin"
+# export PATH="$PATH:/home/delta/.cargo/bin"    
+
+PATH="$PATH"
+for i in "${PATH_ARRAY[@]}"
+do
+    PATH+=":$i"
+done
+
+export PATH

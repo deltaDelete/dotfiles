@@ -83,7 +83,7 @@
                             "tooltip": "{{wpctl get-volume @DEFAULT_SINK@ | sed 's/Volume: //g' | awk '{print $0 * 100}'}}",
                             "length": 100,
                             "max": 100,
-                            "on_change": "!500:wpctl set-volume @DEFAULT_SINK@ $0%",
+                            "on_change": "!500:~/.config/ironbar/setvol.sh $0",
                             "value": "wpctl get-volume @DEFAULT_SINK@ | sed 's/Volume: //g' | awk '{print $0 * 100}'"
                         }
                     ],

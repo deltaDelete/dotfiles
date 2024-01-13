@@ -1,8 +1,3 @@
-# Path
-export PATH="$PATH:/home/delta/.yarn/bin"
-export PATH="$PATH:/home/delta/.cargo/bin"
-export PATH="$PATH:/opt/flutter/bin"
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
