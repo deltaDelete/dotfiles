@@ -155,13 +155,13 @@
                                 {
                                     "class": "power-button-inner",
                                     "label": "",
-                                    "on_click_middle": "gtklock -m /usr/lib/gtklock/userinfo-module.so -m /usr/lib/gtklock/playerctl-module.so -m /usr/lib/gtklock/powerbar-module.so -d",
+                                    "on_click_middle": "gtklock -m /usr/lib/gtklock/userinfo-module.so -m /usr/lib/gtklock/playerctl-module.so -m /usr/lib/gtklock/powerbar-module.so -d -i",
                                     "type": "button"
                                 },
                                 {
                                     "class": "power-button-inner",
                                     "label": "󰍲",
-                                    "on_click_middle": "systemctl reboot --boot-loader-entry=auto-windows",
+                                    "on_click_middle": "systemctl reboot --boot-loader-entry=windows11.conf",
                                     "type": "button"
                                 }
                             ]
