@@ -1,0 +1,156 @@
+window.bar {
+    background-color: transparent;
+    color: @theme_fg_color;
+    font-family: Hack, 'Symbols Nerd Font Mono'
+}
+
+button {
+    min-width: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: transparent;
+}
+
+label {
+    font-weight: bold;
+}
+
+.client-title {
+    color: @theme_selected_bg_color;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.notification {
+    color: yellow;
+}
+
+progress,
+highlight {
+    min-height: 8px;
+}
+
+.module {
+    background-color: rgba(48, 48, 48, 0.5);
+    border-width: 0.0125rem;
+    border-color: white;
+    border-radius: 1.25rem;
+    border-style: solid;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.hoverable:not(.module) {
+    border-width: 0.0125rem;
+    border-color: transparent;
+    border-radius: 1.25rem;
+    border-style: solid;
+}
+
+.module.hoverable:hover,
+.module > .hoverable:hover,
+.power .hoverable:hover {
+    border-width: 0.1rem;
+    background-color: rgba(102, 170, 255, 0.2);
+    color: rgba(102, 170, 255, 1);
+    border-color: rgba(102, 170, 255, 0.95);
+}
+
+.workspaces {
+    padding: 0;
+}
+
+.workspaces .workspace {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 1.25rem;
+}
+
+.workspaces .workspace.focused {
+    background-color: rgba(102, 170, 255, 0.2);
+    color: rgba(102, 170, 255, 0.95);
+    border-color: rgba(102, 170, 255, 0.95);
+}
+
+.workspaces .workspace:hover {
+    border-color: rgb(102, 171, 255);
+    background-color: rgba(0, 85, 255, 0.2)
+}
+
+.volume.module > box {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.background.csd.popup {
+    background-color: rgba(48, 48, 48, 0.5);
+    border-width: 0.0125rem;
+    border-color: white;
+    border-radius: 1.25rem;
+    border-style: solid;
+}
+
+.background.csd.popup > decoration {
+    background-color: transparent;
+    border-width: 0;
+    border-color: transparent;
+    border-radius: 1.25rem;
+    border-style: solid;
+    outline: none;
+}
+
+menu {
+    background-color: transparent;
+    border-width: 0;
+    border-color: transparent;
+    border-radius: 1.25rem;
+    border-style: solid;
+}
+
+menuitem {
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 1.25rem;
+}
+
+menuitem:hover {
+    border-color: rgba(102, 170, 255, 0.95);
+    background-color: rgba(102, 170, 255, 0.2);
+}
+
+.power > box > image {
+    border-radius: 1.25rem;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right-width: 0.1rem;
+    border-style: solid;
+    border-right-width: 0.1px;
+    border-color: transparent;
+    margin: 0px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 18px;
+}
+
+.power > box > image.revealed {
+    border-right-color: white;
+    background-color: rgba(128, 0, 0, 0.2);
+}
+
+.power .hoverable {
+    min-width: 2rem;
+}
+
+.power .hoverable:first-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.module.systray {
+    padding-left: 0;
+    padding-right: 0;
+}
