@@ -1,17 +1,24 @@
-font_family     Symbols Nerd Font Mono
-font_family	Hack Mono
-bold_font	auto
-italic_font	auto
-bold_italic_font	auto
-font_size	14
+font_family         Symbols Nerd Font Mono
+font_family         Hack Regular
+bold_font           auto
+italic_font         auto
+bold_italic_font    auto
+font_size           13
+# background          #222222
+padding             10
+background_opacity  0.75
+cursor_shape        beam
 
-background	#222222
-padding		10
-background_opacity 0.75
-cursor_shape	beam
+open_url_modifiers  ctrl
 
-open_url_modifiers ctrl
-
-term xterm-kitty
+term                xterm-kitty
 
 window_padding_width 1
+
+map ctrl+f2 detach_tab
+
+
+# BEGIN_KITTY_THEME
+# Catppuccin-Latte
+include current-theme.conf
+# END_KITTY_THEME

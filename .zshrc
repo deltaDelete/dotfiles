@@ -13,7 +13,8 @@ plugins=(
 	git
 	k
 	zsh-autosuggestions
-	zsh-syntax-highlighting
+	# zsh-syntax-highlighting
+    F-Sy-H
 	dotnet
 )
 
@@ -23,23 +24,26 @@ source $ZSH/oh-my-zsh.sh
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Enable conda
-[ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
 [ -f $HOME/.local/bin/.imgurs_completions.zsh ] && source $HOME/.local/bin/.imgurs_completions.zsh
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
 alias vim=nvim
+
+# pnpm
+export PNPM_HOME="/home/delta/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export MANPAGER="bat -l man -p"
+alias ls="eza"
+alias rm="rmtrash"
+
+source /usr/share/nvm/init-nvm.sh
+
+[[ $TERMINAL_EMULATOR == "JetBrains-JediTerm" ]] && alias ls='ls --color'
+
+# find-the-command
+[[ -f /usr/share/doc/find-the-command/ftc.zsh ]] && source /usr/share/doc/find-the-command/ftc.zsh

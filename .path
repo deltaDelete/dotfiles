@@ -1,5 +1,7 @@
 #! /bin/sh
 
+export BUN_INSTALL="$HOME/.bun"
+
 PATH_ARRAY=(
     "$HOME/.dotnet/tools"
     "$HOME/.local/share/flatpak/exports/bin"
@@ -11,6 +13,8 @@ PATH_ARRAY=(
     "$HOME/.local/share/JetBrains/Toolbox/scripts"
     "$HOME/.yarn/bin"
     "$HOME/.cargo/bin"
+    "$BUN_INSTALL/bin"
+    "$HOME/.local/share/pnpm"
 )
 
 # export PATH="$PATH:/home/delta/.dotnet/tools:/home/delta/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"

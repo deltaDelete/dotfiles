@@ -1,3 +1,150 @@
-//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
-@theme "/usr/share/rofi/themes/paper-float.rasi"
-//@theme "/home/delta/.config/rofi/paper-float.rasi"
+
+// @theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+configuration {
+    modes: [combi, window, drun, run];
+    combi-modes: [window, drun, run];
+}
+
+* {
+    font: "JetBrainsMono 10";
+}
+
+entry {
+    cursor: pointer;
+    padding: 0px;
+    text-color: white;
+}
+
+element, element.normal.normal, element.alternate.normal {
+    orientation: horizontal;
+    children: [element-icon, element-text];
+    spacing: 0.5em;
+    text-color: white;
+    background-color: rgba(48,48,48, 0.5);
+    border-radius: 1em;
+    border-color: rgba(255,255,255, 0.2);
+    border: 1px solid;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 2em;
+    margin: 0.5em;
+}
+
+window {
+    text-color: white;
+    padding: 0.5em;
+    height: 80%;
+}
+
+mainbox {
+    spacing: 0.5em;
+    children: [inputbar, message, listview, mode-switcher];
+}
+
+mode-switcher {
+    padding: 0.5em;
+    spacing: 1em;
+}
+
+button {
+    padding: 0.5em;
+    text-color: white;
+}
+
+button.selected, element selected.normal, element selected.active {
+    border-color: rgba(102, 170, 255, 0.95);
+    background-color: rgba(102, 170, 255, 0.2);
+    border: 2px solid;
+    text-color: rgba(102, 170, 255, 0.95);
+}
+
+element normal.active,
+element alternate.active {
+    border-color: rgba(255, 170, 102, 0.95);
+    background-color: rgba(255, 170, 102, 0.2);
+    border: 2px solid;
+    text-color: rgba(255, 170, 102, 0.95);
+}
+
+inputbar {
+    padding: 1em;
+    text-color: gray;
+    vertical-align: 0.5;
+}
+
+prompt {
+    padding: 0 1em 0 1em;
+    text-color: white;
+    vertical-align: 0.5;
+}
+
+listview {
+    padding: 0.5em;
+    columns: 3;
+    spacing: 0.5em;
+}
+
+scrollbar {
+    background-color: white;
+    border-radius: 1em;
+}
+
+scrollbar.handle {
+    background-color: gray;
+    border-radius: 1em;
+}
+
+inputbar entry {
+    text-color: white;
+}
+
+element-icon, element-text {
+    background-color: transparent;
+}
+
+inputbar, element, element.urgent, window, listview, mode-switcher, button {
+    background-color: rgba(48,48,48, 0.5);
+    border-radius: 1em;
+    border-color: rgba(255,255,255, 0.2);
+    border: 1px solid;
+}
+
+@media ( enabled: DMENU ) {
+    listview {
+        columns: 1;
+    }
+
+    mode-switcher {
+        enabled: false;
+    }
+}
+
+@media ( enabled: env(WIN_TAB, false) ) {
+
+    listview {
+        columns: 3;
+        fixed-columns: true;
+        layout: vertical;
+        flow: horizontal;
+    }
+
+    mode-switcher {
+        enabled: false;
+    }
+
+    element {
+        orientation: vertical;
+    }
+
+    element-text {
+        horizontal-align: 0.5;
+        padding: 0.5em;
+        tab-stops: [0, 0];
+    }
+}
