@@ -1,0 +1,141 @@
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font Mono";
+}
+
+label {
+  padding: 0.5rem;
+}
+
+.notification-row {
+  border: solid 0.0125rem rgb(255, 255, 255);
+  border-radius: 1rem;
+  background-color: rgba(48, 48, 48, 0.5);
+  margin-top: 1rem;
+}
+.notification-row .notification-content {
+  margin: 1rem;
+}
+.notification-row:hover {
+  background-color: rgba(0, 45, 102, 0.5);
+  color: #66aaff;
+  border: solid 0.1rem rgba(102, 170, 255, 0.95);
+}
+.notification-row .time {
+  margin-right: 2rem;
+}
+.notification-row overlay > .image {
+  border: solid 0.1rem transparent;
+  border-radius: 0.5rem;
+}
+.notification-row box.inline-reply .inline-reply-entry {
+  border: solid 0.0125rem rgb(255, 255, 255);
+  background-color: rgba(48, 48, 48, 0.5);
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 0.5rem;
+}
+.notification-row box.inline-reply .inline-reply-entry:focus {
+  border: solid 0.1rem rgba(102, 170, 255, 0.95);
+}
+.notification-row box.inline-reply .inline-reply-button {
+  border-radius: 0.5rem;
+}
+.notification-row box.inline-reply .inline-reply-button:hover {
+  background-color: rgba(0, 45, 102, 0.5);
+  color: #66aaff;
+  border: solid 0.1rem rgba(102, 170, 255, 0.95);
+}
+.notification-row button:hover {
+  background-color: rgba(0, 45, 102, 0.5);
+  color: #66aaff;
+  border: solid 0.1rem rgba(102, 170, 255, 0.95);
+}
+
+#control-center-window {
+  min-width: 200px;
+  margin: 1rem;
+  background-color: transparent;
+}
+#control-center-window .control-center {
+  margin: 2rem;
+  padding: 1rem;
+  background-color: rgba(48, 48, 48, 0.5);
+  border: solid 0.0125rem rgb(255, 255, 255);
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2), -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2), 0.5rem -0.5rem 1rem rgba(0, 0, 0, 0.2), -0.5rem -0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+#control-center-window .control-center > box:not(:first-child) {
+  margin-top: 1rem;
+}
+
+button {
+  border: solid 0.0125rem rgb(255, 255, 255);
+  transition: all 200ms;
+}
+button.image-button {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: rgba(48, 48, 48, 0.5);
+  border: solid 0.1rem transparent;
+}
+button.text-button {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: rgba(48, 48, 48, 0.5);
+}
+button.flat {
+  background-color: transparent;
+}
+button.circular {
+  border-radius: 100%;
+}
+button.close-button {
+  border: solid 0.1rem transparent;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+button:hover {
+  background-color: rgba(0, 45, 102, 0.5);
+  color: #66aaff;
+  border: solid 0.1rem rgba(102, 170, 255, 0.95);
+}
+
+.widget-mpris #HdyCarousel {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.widget-mpris .widget-mpris-player {
+  padding: 1rem;
+}
+
+switch {
+  background-color: rgba(48, 48, 48, 0.5);
+  border: solid 0.0125rem rgb(255, 255, 255);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+switch:hover {
+  border: solid 0.1rem rgba(102, 170, 255, 0.95);
+}
+switch slider {
+  background-color: rgb(38, 38, 38);
+  border: solid 0.1rem transparent;
+  border-color: rgb(156, 156, 156);
+  border-radius: 100%;
+  margin: -0.5rem;
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  transition: background-color 100ms, border-color 100ms;
+}
+switch:checked slider {
+  background-color: rgb(0, 45, 102);
+  border: solid 0.1rem rgba(102, 170, 255, 0.95);
+}
+
+.floating-notifications > scrolledwindow > viewport {
+  padding: 2rem;
+}
+
+/*# sourceMappingURL=style.css.map */

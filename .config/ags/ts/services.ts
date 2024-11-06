@@ -1,0 +1,1 @@
+export const Hyprland = await Service.import("hyprland");

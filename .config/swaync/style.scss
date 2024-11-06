@@ -1,0 +1,208 @@
+$bg-default: rgb(48, 48, 48);
+$bg-default-50: rgba($bg-default, 0.5);
+$warn: rgb(255, 187, 102);
+$warn-dark: rgb(102, 56, 0);
+$error: rgb(255, 110, 102);
+$error-dark: rgb(102, 5, 0);
+$active: rgb(102, 170, 255);
+$active-dark: rgb(0, 45, 102);
+$inactive: rgb(156, 156, 156);
+$inactive-dark: rgb(38, 38, 38);
+$bg-hover: rgba($active-dark, 0.5);
+$fg-hover: rgba($active, 1);
+$border-hover: rgba($active, 0.95);
+$border-color-default: rgba(255, 255, 255, 255);
+
+$size-small: 0.5rem;
+$size-default: 1rem;
+$size-large: 2rem;
+$border-default: solid 0.0125rem $border-color-default;
+$border-hover: solid 0.1rem $border-hover;
+$border-not-hover: solid 0.1rem transparent;
+
+* {
+    all: unset;
+    font-family: "JetBrainsMono Nerd Font Mono";
+}
+
+label {
+    padding: $size-small;
+}
+
+.notification-row {
+    border: $border-default;
+    border-radius: $size-default;
+    background-color: $bg-default-50;
+    margin-top: $size-default;
+
+    & .notification-content {
+        margin: $size-default;
+    }
+
+    &:hover {
+        background-color: $bg-hover;
+        color: $fg-hover;
+        border: $border-hover;
+    }
+    & .time {
+        margin-right: $size-large;
+    }
+
+    & overlay > .image {
+        border: $border-not-hover;
+        border-radius: $size-small;
+    }
+
+    & box.inline-reply {
+        & .inline-reply-entry {
+            border: $border-default;
+            background-color: $bg-default-50;
+            border-radius: $size-small;
+            padding-left: $size-default;
+            padding-right: $size-default;
+            margin-right: $size-small;
+
+            &:focus {
+                border: $border-hover;
+            }
+        }
+
+        & .inline-reply-button {
+            border-radius: $size-small;
+            &:hover {
+                background-color: $bg-hover;
+                color: $fg-hover;
+                border: $border-hover;
+            }
+        }
+    }
+
+    & button:hover {
+        background-color: $bg-hover;
+        color: $fg-hover;
+        border: $border-hover;
+    }
+}
+
+#control-center-window {
+    min-width: 200px;
+    margin: $size-default;
+    background-color: transparent;
+
+    & .control-center {
+        margin: $size-large;
+        padding: $size-default;
+        background-color: $bg-default-50;
+        border: $border-default;
+        border-radius: $size-default;
+        box-shadow: 0.5rem 0.5rem 1rem rgba(black, 0.2),
+            -0.5rem 0.5rem 1rem rgba(black, 0.2),
+            0.5rem -0.5rem 1rem rgba(black, 0.2),
+            -0.5rem -0.5rem 1rem rgba(black, 0.2);
+
+        & > box:not(:first-child) {
+            margin-top: $size-default;
+        }
+    }
+}
+
+button {
+    border: $border-default;
+    transition: all 200ms;
+    &.image-button {
+        padding: $size-small;
+        border-radius: $size-default;
+        background-color: $bg-default-50;
+        border: $border-not-hover;
+    }
+
+    &.text-button {
+        padding: $size-small;
+        border-radius: $size-default;
+        background-color: $bg-default-50;
+        // border: $border-not-hover;
+    }
+
+    &.flat {
+        background-color: transparent;
+    }
+
+    &.circular {
+        border-radius: 100%;
+    }
+
+    &.close-button {
+        // background-color: $red;
+        border: $border-not-hover;
+        padding: $size-small;
+        margin: $size-small;
+    }
+
+    &:hover {
+        background-color: $bg-hover;
+        color: $fg-hover;
+        border: $border-hover;
+    }
+}
+
+.widget-mpris {
+    & #HdyCarousel {
+        margin-left: $size-small;
+        margin-right: $size-small;
+    }
+
+    & .widget-mpris-player {
+        padding: $size-default;
+    }
+}
+
+switch {
+    background-color: $bg-default-50;
+    border: $border-default;
+    border-radius: 1rem;
+    padding: $size-small;
+
+    &:hover {
+        border: $border-hover;
+    }
+
+    & slider {
+        background-color: $inactive-dark;
+        border: $border-not-hover;
+        border-color: $inactive;
+        border-radius: 100%;
+        margin: -0.5rem;
+        min-width: $size-small;
+        min-height: $size-small;
+        transition: background-color 100ms, border-color 100ms;
+    }
+
+    &:checked slider {
+        background-color: $active-dark;
+        border: $border-hover;
+    }
+}
+
+// Отступ от краев экрана
+.floating-notifications > scrolledwindow > viewport {
+    padding: 2rem;
+}
+
+// .notification-default-action,
+// .notification-action {
+//     padding: 4px;
+//     margin: 0;
+//     box-shadow: none;
+//     background-color: $bg-default-50;
+//     border: $border-not-hover;
+//     color: white;
+//     &:hover {
+//         -gtk-icon-effect: none;
+//         background-color: $bg-hover;
+//     }
+
+//     &:not(:only-child) {
+//         border-bottom-left-radius: 0px;
+//         border-bottom-right-radius: 0px;
+//     }
+// }
