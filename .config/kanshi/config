@@ -1,0 +1,4 @@
+profile default {
+  output "LG Electronics LG ULTRAGEAR 109NTKF7W021" mode 2560x1440@165 position 0,0 adaptive_sync on
+  output "Lenovo Group Limited LEN L22e-20 0x01010101" mode 1920x1080@60 position 2560,360
+}

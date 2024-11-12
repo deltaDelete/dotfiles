@@ -1,0 +1,24 @@
+window#osd {
+  transition: border-color 50ms ease-in, border-width 50ms ease-in, background-color 100ms ease-in, box-shadow 50ms ease-in;
+  border-radius: 1.25rem;
+  background-color: rgba(48, 48, 48, 0.5);
+  border: solid 0.0125rem rgb(255, 255, 255);
+  font-family: "JetBrains Mono";
+}
+window#osd image {
+  color: #66aaff;
+}
+window#osd image:disabled {
+  color: rgba(102, 170, 255, 0.5);
+}
+window#osd progressbar {
+  background: transparent;
+}
+window#osd trough {
+  background: rgba(102, 170, 255, 0.2);
+}
+window#osd progress {
+  background: #66aaff;
+}
+
+/*# sourceMappingURL=style.css.map */

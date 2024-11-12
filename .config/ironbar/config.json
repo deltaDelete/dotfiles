@@ -31,13 +31,13 @@
                     "type": "workspaces",
                     "all_monitors": true,
                     "name_map": {
-                      "1": "󰇩",
-                      "2": "2",
-                      "3": "3",
-                      "4": "",
-                      "5": "",
-                      "6": "󰓓",
-                      "7": "󰙯"
+                        "1": "󰇩",
+                        "2": "2",
+                        "3": "3",
+                        "4": "",
+                        "5": "",
+                        "6": "󰓓",
+                        "7": "󰙯"
                     }
                 }
             ],
@@ -63,6 +63,9 @@
                     "on_click_left": "hyprctl switchxkblayout turing-gaming-keyboard-turing-gaming-keyboard next",
                     "type": "label",
                     "label": "{{watch:bash ~/.config/eww/scripts/get-active-layout}}"
+                },
+                {
+                    "type": "volume"
                 },
                 {
                     "type": "custom",
