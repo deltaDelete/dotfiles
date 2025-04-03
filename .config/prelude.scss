@@ -1,0 +1,298 @@
+@use "sass:color";
+
+@use "../.cache/wal/colors";
+$background: colors.$background;
+$foreground: colors.$foreground;
+
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+// $bg-default: rgb(48, 48, 48);
+// $warn: rgb(255, 187, 102);
+// $warn-dark: rgb(102, 56, 0);
+// $error: rgb(255, 110, 102);
+// $error-dark: rgb(102, 5, 0);
+// $active: rgb(102, 170, 255);
+// $active-dark: rgb(0, 45, 102);
+// $inactive: rgb(156, 156, 156);
+// $inactive-dark: rgb(38, 38, 38);
+
+$bg-default: $background;
+
+$warn: color.mix($foreground, yellow, $weight: 75%);
+$warn-dark: color.mix($background, yellow);
+
+$error: color.mix($foreground, red, $weight: 75%);
+$error-dark: color.mix($background, red);
+
+$active: colors.$color2;
+$active-dark: color.adjust(colors.$color3, $lightness: -50%);
+
+$inactive: colors.$color7;
+$inactive-dark: colors.$color15;
+
+$bg-default-50: rgba($bg-default, 0.5);
+
+$bg-hover: rgba($active-dark, 0.5);
+$fg-hover: rgba($active, 1);
+
+$border-color-hover: rgba($active, 0.95);
+$border-color-default: rgba($foreground, 255);
+
+$bg-active: rgba($active, 0.5);
+$fg-active: $active-dark;
+
+$size-small: 0.5rem;
+$size-default: 1rem;
+$size-large: 2rem;
+$border-radius-default: 1rem + 0.25rem;
+$border-default: solid 0.0125rem $border-color-default;
+$border-hover: solid 0.1rem $border-color-hover;
+$border-not-hover: solid 0.1rem transparent;
+
+$shadow-default:
+    0.25rem 0.25rem 1rem rgba(black, 0.1),
+    -0.25rem 0.25rem 1rem rgba(black, 0.1),
+    0.25rem -0.25rem 1rem rgba(black, 0.1),
+    -0.25rem -0.25rem 1rem rgba(black, 0.1);
+
+$transition-default:
+    border-color 50ms ease-in,
+    border-width 50ms ease-in,
+    background-color 100ms ease-in,
+    box-shadow 50ms ease-in;
+
+@mixin hoverable() {
+    & {
+        &:hover {
+            background-color: $bg-hover;
+            border: $border-hover;
+            color: $fg-hover;
+        }
+    }
+}
+
+@mixin hoverable_pseudoborder() {
+    & {
+        &:hover {
+            background-color: $bg-hover;
+            box-shadow: inset 0 0 0 0.1rem $border-color-hover;
+        }
+
+        &.urgent:hover {
+            $bg-hover: $warn-dark;
+            $fg-hover: $warn;
+            background-color: $bg-hover;
+            box-shadow: inset 0 0 0 0.1rem $border-color-hover;
+        }
+    }
+}
+
+@mixin activatable() {
+    & {
+        // transition: transform 50ms ease-in-out, $transition-default;
+
+        &:active {
+            background-color: $bg-active;
+            color: $fg-active;
+            border: $border-hover;
+            // transform: scale(0.9);
+            // margin-top: 0.1rem;
+            // margin-bottom: 0.1rem;
+            // margin-left: 0.1rem;
+            // margin-right: 0.1rem;
+        }
+    }
+}
+
+@mixin activatable_pseudoborder() {
+    & {
+        // transition: transform 50ms ease-in-out, $transition-default;
+
+        &:active {
+            background-color: $bg-active;
+            color: $fg-active;
+            box-shadow: inset 0 0 0 0.1rem $border-color-hover;
+            // transform: scale(0.9);
+            // margin-top: 0.1rem;
+            // margin-bottom: 0.1rem;
+            // margin-left: 0.1rem;
+            // margin-right: 0.1rem;
+        }
+    }
+}
+
+@mixin active_scale {
+    & {
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+}
+
+@mixin focusable() {
+    & {
+        &:focus-visible {
+            border: $border-hover;
+        }
+    }
+}
+
+* {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10pt;
+    font-weight: bold;
+    // color: $foreground;
+    transition: $transition-default;
+}
+
+label {
+    color: inherit;
+}
+
+window,
+button,
+modelbutton {
+    all: unset;
+    box-shadow: none;
+}
+
+button.reveal {
+    border: $border-not-hover;
+    border-radius: $border-radius-default;
+    padding: $size-small - 0.25rem;
+    transition: $transition-default;
+
+    @include hoverable;
+    @include activatable;
+}
+
+window.popup {
+    background-color: transparent;
+
+    & decoration {
+        background-color: transparent;
+        box-shadow: none;
+    }
+}
+
+menu {
+    background-color: $bg-default-50;
+    border: $border-default;
+    border-radius: $border-radius-default;
+    padding: $size-small;
+
+    & menuitem {
+        background-color: transparent;
+        border: $border-not-hover;
+        border-radius: $size-small + 0.25rem;
+        padding: $size-small $size-default;
+        color: $foreground;
+        transition: $transition-default;
+
+        @include hoverable;
+        @include activatable;
+
+        &:disabled {
+            // background-color: rgba(
+            //     color.adjust($inactive-dark, $lightness: -20%),
+            //     20%
+            // );
+            background-color: rgba($inactive-dark, 20%);
+            color: $inactive;
+
+            // & label {
+            //     // color: color.adjust($inactive-dark, $lightness: -20%);
+            // }
+        }
+    }
+}
+
+.popover {
+    background-color: $bg-default-50;
+    border: $border-default;
+    border-radius: $border-radius-default;
+    padding: $size-small;
+    color: $foreground;
+}
+
+calendar {
+    background-color: transparent;
+    border: none;
+    padding: $size-small;
+
+    // buttons in month/year selection
+    &.button {
+        padding: $size-small;
+
+        &:hover {
+            color: $fg-hover;
+        }
+    }
+
+    // selected day
+    &:selected {
+        background-color: $bg-active;
+        color: $fg-active;
+    }
+
+    // days not from selected month
+    &:indeterminate {
+        color: $inactive;
+    }
+
+    // day of week
+    &.highlight {
+        background-color: $bg-default-50;
+        border: $border-default;
+        border-radius: $size-small + 0.25rem;
+    }
+
+    &.header {
+        // background-color: $bg-default-50;
+        // color: $foreground;
+    }
+}
+
+scale {
+    & trough {
+        background-color: $bg-hover;
+    }
+
+    & highlight {
+        background-color: $bg-active;
+    }
+
+    & slider {
+        background-color: color.mix($fg-hover, $foreground);
+        border: $border-hover;
+        border-color: $bg-hover;
+    }
+}
+
+switch {
+    background-color: $bg-default-50;
+    border: $border-hover;
+    border-color: $bg-hover;
+
+    & slider {
+        background-color: color.mix($fg-hover, $bg-default);
+        border: $border-hover;
+        border-color: $bg-hover;
+    }
+
+    &:checked {
+        background-color: $bg-hover;
+
+        & slider {
+            background-color: color.mix($fg-hover, $foreground);
+        }
+    }
+
+    @include hoverable;
+    @include activatable;
+}
+
+tooltip {
+    background-color: rgba($bg-default, 0.75);
+    border: $border-default;
+    border-radius: $size-small + 0.25rem;
+}

@@ -5,4 +5,5 @@ vim.opt.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
+vim.opt.cindent = true
 vim.opt_global.indentkeys = "0},0]"

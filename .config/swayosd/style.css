@@ -1,24 +1,193 @@
+* {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  transition: border-color 50ms ease-in, border-width 50ms ease-in, background-color 100ms ease-in, box-shadow 50ms ease-in;
+}
+
+label {
+  color: inherit;
+}
+
+window,
+button,
+modelbutton {
+  all: unset;
+  box-shadow: none;
+}
+
+button.reveal {
+  border: solid 0.1rem transparent;
+  border-radius: 1.25rem;
+  padding: 0.25rem;
+  transition: border-color 50ms ease-in, border-width 50ms ease-in, background-color 100ms ease-in, box-shadow 50ms ease-in;
+}
+button.reveal:hover {
+  background-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  color: #f591cf;
+}
+button.reveal:focus {
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+}
+button.reveal:active {
+  background-color: rgba(245, 145, 207, 0.5);
+  color: rgb(107.8878504673, 40.1121495327, 94.0560747664);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+
+window.popup {
+  background-color: transparent;
+}
+window.popup decoration {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+menu {
+  background-color: rgba(46, 22, 51, 0.5);
+  border: solid 0.0125rem #cac4cc;
+  border-radius: 1.25rem;
+  padding: 0.5rem;
+}
+menu menuitem {
+  background-color: transparent;
+  border: solid 0.1rem transparent;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  color: #cac4cc;
+  transition: border-color 50ms ease-in, border-width 50ms ease-in, background-color 100ms ease-in, box-shadow 50ms ease-in;
+}
+menu menuitem:hover {
+  background-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  color: #f591cf;
+}
+menu menuitem:focus {
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+}
+menu menuitem:active {
+  background-color: rgba(245, 145, 207, 0.5);
+  color: rgb(107.8878504673, 40.1121495327, 94.0560747664);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+menu menuitem:disabled {
+  background-color: rgba(202, 196, 204, 0.2);
+  color: #9f97a1;
+}
+
+.popover {
+  background-color: rgba(46, 22, 51, 0.5);
+  border: solid 0.0125rem #cac4cc;
+  border-radius: 1.25rem;
+  padding: 0.5rem;
+  color: #cac4cc;
+}
+
+calendar {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+}
+calendar.button {
+  padding: 0.5rem;
+}
+calendar.button:hover {
+  color: #f591cf;
+}
+calendar:selected {
+  background-color: rgba(245, 145, 207, 0.5);
+  color: rgb(107.8878504673, 40.1121495327, 94.0560747664);
+}
+calendar:indeterminate {
+  color: #9f97a1;
+}
+calendar.highlight {
+  background-color: rgba(46, 22, 51, 0.5);
+  border: solid 0.0125rem #cac4cc;
+  border-radius: 0.75rem;
+}
+scale trough {
+  background-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+}
+scale highlight {
+  background-color: rgba(245, 145, 207, 0.5);
+}
+scale slider {
+  background-color: rgb(223.5, 170.5, 205.5);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  border-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+}
+
+switch {
+  background-color: rgba(46, 22, 51, 0.5);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  border-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+}
+switch slider {
+  background-color: rgb(145.5, 83.5, 129);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  border-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+}
+switch:checked {
+  background-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+}
+switch:checked slider {
+  background-color: rgb(223.5, 170.5, 205.5);
+}
+switch:hover {
+  background-color: rgba(107.8878504673, 40.1121495327, 94.0560747664, 0.5);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  color: #f591cf;
+}
+switch:focus {
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+}
+switch:active {
+  background-color: rgba(245, 145, 207, 0.5);
+  color: rgb(107.8878504673, 40.1121495327, 94.0560747664);
+  border: solid 0.1rem rgba(245, 145, 207, 0.95);
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+
+tooltip {
+  background-color: rgba(46, 22, 51, 0.75);
+  border: solid 0.0125rem #cac4cc;
+  border-radius: 0.75rem;
+}
+
 window#osd {
   transition: border-color 50ms ease-in, border-width 50ms ease-in, background-color 100ms ease-in, box-shadow 50ms ease-in;
   border-radius: 1.25rem;
-  background-color: rgba(48, 48, 48, 0.5);
-  border: solid 0.0125rem rgb(255, 255, 255);
+  background-color: rgba(46, 22, 51, 0.5);
+  border: solid 0.0125rem #cac4cc;
   font-family: "JetBrains Mono";
 }
 window#osd image {
-  color: #66aaff;
+  color: #f591cf;
 }
 window#osd image:disabled {
-  color: rgba(102, 170, 255, 0.5);
+  color: rgba(245, 145, 207, 0.5);
 }
 window#osd progressbar {
   background: transparent;
 }
 window#osd trough {
-  background: rgba(102, 170, 255, 0.2);
+  background: rgba(245, 145, 207, 0.2);
 }
 window#osd progress {
-  background: #66aaff;
+  background: #f591cf;
 }
 
 /*# sourceMappingURL=style.css.map */

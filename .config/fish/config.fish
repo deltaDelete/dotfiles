@@ -2,6 +2,15 @@
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    if set -q TERMINAL_EMULATOR
+        if test $TERMINAL_EMULATOR = JetBrains-JediTerm
+            functions --erase ls
+        end
+    end
+
+    starship init fish | source
+    jdkman -i | source
+
 end
 
 eval (dircolors --c-shell)
@@ -18,14 +27,15 @@ export LESS_TERMCAP_us=(set_color --underline) # Начало подчеркив
 export LESS_TERMCAP_ue=(set_color normal) # Конец подчеркивания
 export GROFF_NO_SGR=1
 export LESS="-R --use-color"
-export MANPAGER='less -s -M +Gg'
+export MANPAGER='nvim +Man!'
 export EZA_ICONS_AUTO=''
 export EDITOR=nvim
 
-if set -q TERMINAL_EMULATOR
-    if test $TERMINAL_EMULATOR = JetBrains-JediTerm
-        functions --erase ls
-    end
-end
+bind -M insert delete delete-char
 
-starship init fish | source
+# pnpm
+set -gx PNPM_HOME "/home/delta/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
